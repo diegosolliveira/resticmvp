@@ -9,6 +9,7 @@
 }
 
 .input-password input {
+    color: var(--tertiary-gray-1);
     padding: 10px;
     font-size: 18px;
     height: 46px;
@@ -48,9 +49,25 @@
 }
 
 .input-select select {
+    color: var(--tertiary-gray-1);
     padding: 10px;
     font-size: 18px;
     height: 46px;
     border-radius: 10px;
     border: solid 1px var(--tertiary-gray-4);
+}
+
+.input-select select:focus {
+    border: solid 1px var(--tertiary-gray-1);
+    outline: none;
+}
+
+.input-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='%23000'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
 }
