@@ -1,0 +1,16 @@
+.container-card {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    left: 380px;
+    padding: 15px;
+    border-bottom: 1px solid var(--tertiary-gray-4);
+    background-color: white;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: var(--tertiary-gray-1);
+}

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { LoginView } from "./pages/Login"
+import { PainelControle } from "./pages/PainelControle"
 import { CadastroView } from "./pages/Cadastro"
+import { Sidebar } from "./components/Menu"
 import "./globals.css";
 
 const inter = Inter({
@@ -23,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} container`}>
-        <CadastroView></CadastroView>
+        <PainelControle></PainelControle>
+        {/* <Sidebar></Sidebar> */}
+        {/* <CadastroView></CadastroView> */}
         {/* <LoginView></LoginView> */}
         {children}
       </body>

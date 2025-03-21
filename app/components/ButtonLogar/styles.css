@@ -1,36 +1,37 @@
 .btn-login {
-    height: 46px;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 500;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary-blue-10);
-    border: none;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-login:hover {
-    background-color: var(--secondary-blue-4);
-  }
-  
-  .btn-cancelar {
-    height: 46px;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 500;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: solid 1px var(--error-1);
-    color: var(--error-1);
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-cancelar:hover {
-    background-color: var(--error-1);
-    color: white;
-  }
+  display: flex;
+  height: 46px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-blue-10);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: var(--secondary-blue-4);
+}
+
+.btn-cancelar {
+  height: 46px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: solid 1px var(--error-1);
+  color: var(--error-1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-cancelar:hover {
+  background-color: var(--error-1);
+  color: white;
+}

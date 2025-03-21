@@ -3,7 +3,6 @@ import { InputCadastro } from "../../components/InputCadastro";
 import "./styles.css";
 
 export function LoginView() {
-
     return (
         <div className="container-login">
             <div className="container-left">
