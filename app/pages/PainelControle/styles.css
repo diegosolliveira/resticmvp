@@ -1,0 +1,51 @@
+.container-pcontrole {
+    display: flex;
+    width: 100%;
+    height: 60px;
+}
+
+.container-dashboard {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 70px;
+    width: 1490px;
+    gap: 40px;
+}
+
+.dashboard h1,
+.dashboard span {
+    color: var(--tertiary-gray-1);
+}
+
+.dashboard-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.dashboard-description {
+    font-size: 16px;
+}
+
+.dashboard-card2 {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.dashboard-card3 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid var(--tertiary-gray-4);
+    border-radius: 10px;
+
+    h1 {
+        font-size: 24px;
+    }
+}

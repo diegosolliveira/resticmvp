@@ -1,0 +1,28 @@
+.static-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--tertiary-gray-4);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    height: 150px;
+}
+
+.static-card-title {
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.static-card h2 {
+    color: var(--tertiary-gray-1);
+    margin-top: 20px;
+}
+
+.static-card span {
+    color: var(--tertiary-gray-1);
+    font-size: 14px;
+}

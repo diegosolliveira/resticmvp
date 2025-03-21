@@ -1,9 +1,7 @@
 .container-sidebar {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    height: 100vh; 
+    position: relative;
     width: 380px;
+    height: 100vh; 
     padding: 30px;
     border-right: 1px solid var(--tertiary-gray-4); 
     background-color: white;
@@ -11,7 +9,6 @@
     flex-direction: column;
     gap: 50px;
     justify-content: space-between;
-    z-index: 1000;
 }
 
 
@@ -22,16 +19,17 @@
 }
 
 .nav-links {
-    font-size: 17px;
+    display: flex;
+    font-size: 20px;
     padding: 14px;
     border-radius: 10px;
     text-decoration: none;
     font-family: var(--font-primary);
     color: var(--tertiary-gray-1);
+    align-items: center;
 }
 
 .nav-links span {
-    font-size: 20px;
     margin-left: 10px;
 }
 
