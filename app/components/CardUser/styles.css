@@ -1,0 +1,24 @@
+.container-carduser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--tertiary-gray-4);
+    margin-top: 30px;
+}
+
+.carduser-title {
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+    align-items: center;
+    padding: 10px;
+}
+
+.carduser-h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.img-user {
+    height: 60px;
+    margin-right: 20px;
+}

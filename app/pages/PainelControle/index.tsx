@@ -1,6 +1,7 @@
 import { CardTitle } from "../../components/CardTitle";
 import { Sidebar } from "../../components/Menu"
 import { StaticCard } from "../../components/StaticCard";
+import { CardUser } from "../../components/CardUser";
 import { FiUsers, FiShoppingCart, FiDollarSign, FiPackage  } from "react-icons/fi";
 import "./styles.css";
 
@@ -31,8 +32,18 @@ export function PainelControle() {
                     </div>
 
                     <div className="dashboard-card3">
-                        <h1>Atividades Recentes</h1>
+                        <h1 className="dashboard-card3-h1">Atividades Recentes</h1>
+                        
+                        <CardUser name="João Silva" description="Registrou-se no sistema" time="5 min"></CardUser>
 
+                        <CardUser name="Maria Oliveira" description="Enviou um novo produto" time="10 min"></CardUser>
+
+                        <CardUser name="Guilherme Silva" description="Fez um novo pedido" time="1 hora"></CardUser>
+
+                        <CardUser name="Eduardo Junior" description="Fez um novo pedido" time="2 horas"></CardUser>
+
+                        <CardUser name="Marcus Junior" description="Fez um novo pedido" time="3 horas"></CardUser>
+                        
                     </div>
                 </div>
             </div>

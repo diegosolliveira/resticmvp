@@ -1,6 +1,9 @@
 .container-sidebar {
-    position: relative;
+    position: fixed;
     width: 380px;
+    z-index: 1;
+    left: 0;
+    top: 0;
     height: 100vh; 
     padding: 30px;
     border-right: 1px solid var(--tertiary-gray-4); 

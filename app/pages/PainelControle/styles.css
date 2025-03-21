@@ -1,20 +1,19 @@
 .container-pcontrole {
     display: flex;
-    width: 100%;
-    height: 60px;
+    /* width: 0%; */
 }
 
 .container-dashboard {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+    flex: 1;
+    padding-left: 340px;
 }
 
 .dashboard {
     display: flex;
     flex-direction: column;
-    padding: 50px 70px;
-    width: 1490px;
+    width: 100%;
+    padding: 50px 50px;
+    margin-top: 50px;
     gap: 40px;
 }
 
@@ -44,8 +43,8 @@
     padding: 20px;
     border: 1px solid var(--tertiary-gray-4);
     border-radius: 10px;
+}
 
-    h1 {
-        font-size: 24px;
-    }
+.dashboard-card3-h1 {
+    font-size: 24px;
 }
