@@ -1,12 +1,18 @@
 import { ButtonLogin } from "../ButtonLogar"
 import "./styles.css"
 
-export function Profile() {
+interface dadosProfile {
+    name: string;
+    email: string;
+    cpf: string;
+}
+
+export function Profile( {name, email, cpf}: dadosProfile) {
     return (
         <div className="container-profile">
             <div className="profile-title">
                 <img className="img-user" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="" />
-                <h1 className="profile-name">Admin da Silva</h1>
+                <h1 className="profile-name">{name}</h1>
             </div>
 
             <hr className="hr-horizontal" />
@@ -17,12 +23,12 @@ export function Profile() {
                 <div className="profile-dados-infos">
                     <div>
                         <span className="textfield-email">Email</span>
-                        <span className="profile-email">admin@gmail.com</span>
+                        <span className="profile-email">{email}</span>
                     </div>
 
                     <div>
                         <span className="textfield-cnpj">CPF/CNPJ</span>
-                        <span className="profile-cnpj">000.000.000-00</span>
+                        <span className="profile-cnpj">{cpf}</span>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ export function Configuracao() {
                 <CardTitle name="Configuração"></CardTitle>
 
                 <div className="dashboard">
-                    <Profile></Profile>
+                    <Profile name="Guilherme Silva" email="gui@hotmail.com" cpf="000.000.000-93"></Profile>
                 </div>
             </div>
         </div>
