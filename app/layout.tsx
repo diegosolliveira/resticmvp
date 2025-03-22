@@ -26,11 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} container`}>
-        <Configuracao></Configuracao>
+        {/* <Configuracao></Configuracao> */}
         {/* <PainelControle></PainelControle> */}
         {/* <Sidebar></Sidebar> */}
         {/* <CadastroView></CadastroView> */}
-        {/* <LoginView></LoginView> */}
+        <LoginView></LoginView>
         {children}
       </body>
     </html>

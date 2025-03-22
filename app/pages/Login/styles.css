@@ -69,3 +69,11 @@
 .link-cadastrar a:hover {
     color: var(--secondary-blue-4);
 }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -15px;
+    margin-bottom: -5px;
+    display: flex;
+}

@@ -4,10 +4,12 @@ interface InputCadastroProps {
     name: string;
     type: string;
     classInput: string;
-    options?: { value: string; label: string }[]; 
+    options?: { value: string; label: string }[];
+    value?: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function InputCadastro({ name, type, classInput, options = [] }: InputCadastroProps) {
+export function InputCadastro({ name, type, classInput, options = [], value, onChange }: InputCadastroProps) {
     return (
         <div className={classInput}>
             <span>{name}</span>
@@ -20,7 +22,7 @@ export function InputCadastro({ name, type, classInput, options = [] }: InputCad
                     ))}
                 </select>
             ) : (
-                <input type={type} />
+                <input type={type} value={value} onChange={onChange} />
             )}
         </div>
     );
