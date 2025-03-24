@@ -12,7 +12,7 @@ export default function LoginView() {
     const router = useRouter();
 
     const handleLogin = () => {
-        router.push("/pages/cadastro");
+        router.push("/pages/painelcontrole");
     };
 
     return (

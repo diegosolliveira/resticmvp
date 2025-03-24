@@ -8,7 +8,7 @@ export default function Configuracao() {
         <div className="container-pcontrole">
             <Sidebar></Sidebar>
 
-            <div className="container-dashboard">
+            <div className="container-dashboard-config">
 
                 <CardTitle name="Configuração"></CardTitle>
 

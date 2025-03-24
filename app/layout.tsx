@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import LoginView from "./pages/login/page"
-import PainelControle from "./pages/painelcontrole/page"
-import Configuracao from "./pages/configuracao/page"
-import CadastroView from "./pages/cadastro/page"
-import Sidebar from "./components/Menu"
 import "./globals.css";
 
 const inter = Inter({

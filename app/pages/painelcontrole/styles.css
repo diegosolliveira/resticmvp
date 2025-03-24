@@ -1,11 +1,11 @@
 .container-pcontrole {
     display: flex;
-    /* width: 0%; */
 }
 
 .container-dashboard {
     flex: 1;
     padding-left: 340px;
+    position: relative;
 }
 
 .dashboard {
