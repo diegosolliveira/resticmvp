@@ -1,0 +1,68 @@
+.user-table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table th {
+  background: #f4f4f4;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.badge.agência {
+  background: #F06666;
+}
+
+.badge.cliente {
+  background: #00953B;
+}
+
+.line-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+}
+.delete-button,
+.edit-button {
+  border: none;
+  cursor: pointer;
+
+  padding: 4px;
+  border-radius: 8px;
+
+  color: white;
+  font-size: 16px;
+
+  transition: all 0.5s ease-in;
+}
+
+.delete-button {
+  background: #C00404;
+}
+
+.edit-button {
+  background: #008DD2;
+}
+
+.delete-button:hover {
+  background: #970f1d;
+}
+
+.edit-button:hover {
+  background: #08407b;
+}
