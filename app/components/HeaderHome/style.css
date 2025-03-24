@@ -1,0 +1,139 @@
+.header-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+
+  gap: 20px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: var(--tertiary-gray-1);
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 20px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.header-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  font-size: 12px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  font-weight: bold;
+  font-size: 14px;
+
+  color: #ffffff;
+  background: var(--primary-blue-10);
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-avatar:hover {
+  background: var(--tertiary-gray-1);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+.nav-link {
+  color: var(--tertiary-gray-1);
+  text-decoration: none;
+  transition: all ease-in 0.5s;
+}
+
+.nav-link:hover {
+  color:  var(--primary-blue-10);
+}
+
+/* Menu lateral */
+.sideBar {
+  display: none;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 80%;
+  z-index: 100;
+
+  height: auto;
+  padding: 16px;
+
+  border-radius: 4px;
+  border: 1px solid var(--tertiary-gray-1);
+
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.sideBar.open {
+  display: flex;
+}
+
+.sideBar.closed {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .header-options {
+    display: none;
+  }
+}

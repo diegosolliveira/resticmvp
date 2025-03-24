@@ -1,0 +1,104 @@
+.search-destiny-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 800px;
+  padding: 20px;
+  border-radius: 12px;
+
+  background-color: #ffffff;
+}
+
+.search-destiny-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 8px;
+
+  border: 1px solid var(--tertiary-gray-1);
+  border-radius: 12px;
+}
+
+.btn-search-destiny {
+  font-size: 12px;
+  font-weight: bolder;
+
+  color: var(--tertiary-gray-1);
+  background-color: transparent;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.btn-search-active {
+  color: #ffffff;
+  background-color: var(--tertiary-gray-1);
+}
+
+.btn-search-destiny:hover {
+  color: white;
+  background-color: var(--secondary-blue-1);
+}
+
+.search-destiny-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  width: 100%;
+}
+
+.input-search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--tertiary-gray-1);
+
+  background-color: white;
+  color: var(--tertiary-gray-1);
+}
+
+.input-search-icon input {
+  font-size: 14px;
+  padding: 4px;
+
+  border: none;
+  outline: none;
+
+  color: var(--tertiary-gray-1);
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 4px;
+}
+
+@media (max-width: 800px) {
+  .search-destiny-container {
+    align-items: center;
+    gap: 4vw;
+
+    width: 100%;
+    padding: 20px;
+  }
+
+  .search-destiny-box {
+    flex-direction: column;
+    gap: 2vw;
+
+    width: 100%;
+  }
+}

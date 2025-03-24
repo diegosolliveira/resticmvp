@@ -1,0 +1,81 @@
+.card-destination {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+
+  gap: 8px;
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+
+  background-color: var(--primary-blue-60);
+  border-radius: 12px;
+  padding: 0;
+}
+
+.card-destination-image {
+  position: relative;
+  width: 100%;
+  height: 180px;
+}
+
+.card-destinatio-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+.img-destination {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  border-radius: 12px 12px 0 0;
+  transition: all ease-in 0.5s;
+}
+
+.card-destination-rate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  gap: 4px;
+  right: 5%;
+  top: 5%;
+
+  padding: 4px;
+  border-radius: 12px;
+
+  color: var(  --tertiary-gray-1);
+  background-color: white;
+}
+
+.card-rate-text {
+  font-size: 12px;
+}
+
+.card-rate-text .bi-star-fill {
+  color: yellow;
+}
+
+.card-destination-content {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+  padding: 8px;
+}
+
+.card-destination-title {
+  font-weight: bolder;
+}
+.card-destination-text {
+  font-size: 12px;
+}
+.card-destination-price {
+  font-weight: bolder;
+  color: #336eee;
+}
