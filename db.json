@@ -1,11 +1,60 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "name": "Usuário Teste",
-        "email": "teste@email.com",
-        "password": "123456"
-      }
-    ]
-  }
-  
+  "usuarios": [
+    {
+      "id": "123457UC",
+      "nome": "Maria",
+      "sobrenome": "Oliveira",
+      "email": "maria@gmail.com",
+      "cpf": "777.777.777-77",
+      "tipo": "Cliente"
+    },
+    {
+      "id": "123460UC",
+      "nome": "Pedro",
+      "sobrenome": "Souza",
+      "email": "pedro@gmail.com",
+      "cpf": "444.444.444-44",
+      "tipo": "Cliente"
+    },
+    {
+      "id": "123461UC",
+      "nome": "Luciana",
+      "sobrenome": "Almeida",
+      "email": "luciana@gmail.com",
+      "cpf": "333.333.333-33",
+      "tipo": "Agência"
+    },
+    {
+      "id": "123462UC",
+      "nome": "Fernanda",
+      "sobrenome": "Silva",
+      "email": "fernanda@gmail.com",
+      "cpf": "222.222.222-22",
+      "tipo": "Cliente"
+    },
+    {
+      "id": "123463UC",
+      "nome": "Ricardo",
+      "sobrenome": "Lima",
+      "email": "ricardo@gmail.com",
+      "cpf": "111.111.111-11",
+      "tipo": "Agência"
+    },
+    {
+      "id": "123464UC",
+      "nome": "Beatriz",
+      "sobrenome": "Pereira",
+      "email": "beatriz@gmail.com",
+      "cpf": "000.000.000-00",
+      "tipo": "Cliente"
+    },
+    {
+      "id": "123465UC",
+      "nome": "Marcos",
+      "sobrenome": "Dias",
+      "email": "marcos@gmail.com",
+      "cpf": "999.999.999-99",
+      "tipo": "Agência"
+    }
+  ]
+}
