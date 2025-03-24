@@ -1,5 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import LoginView from "./pages/login/page"
 import "./globals.css";
 

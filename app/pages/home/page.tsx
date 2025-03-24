@@ -4,7 +4,7 @@ import InformationCard from "../../components/Cards/InformationCard";
 import PromotionCard from "../../components/Cards/PromotionCard";
 import FooterHome from "../../components/Footer";
 import HeaderHome from "../../components/HeaderHome/index";
-import "../Home/style.css";
+import "./style.css";
 
 const informationCards = [
   {

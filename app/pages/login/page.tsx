@@ -2,21 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { gql, useLazyQuery } from "@apollo/client";
 import ButtonLogin from "../../components/ButtonLogar";
 import InputCadastro from "../../components/InputCadastro";
-import client from "../../lib/apolloClient";
 import "./styles.css";
-
-const LOGIN_QUERY = gql`
-  query Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      id
-      email
-      password
-    }
-  }
-`;
 
 export default function LoginView() {
     const [email, setEmail] = useState("");
@@ -24,32 +12,8 @@ export default function LoginView() {
     const [error, setError] = useState(null);
     const router = useRouter();
 
-    // Configurando a query
-    const [loginUser, { loading }] = useLazyQuery(LOGIN_QUERY, {
-        client,
-        fetchPolicy: "network-only",
-    });
-
     const handleLogin = async () => {
-        if (!email || !password) {
-            setError("Preencha todos os campos!");
-            return;
-        }
-
-        try {
-            const { data } = await loginUser({
-                variables: { email, password },
-            });
-
-            if (data?.login) {
-                router.push("/pages/painelcontrole");
-            } else {
-                setError("Credenciais inválidas!");
-            }
-        } catch (err) {
-            console.error("Erro no login:", err);
-            setError("Erro ao conectar ao servidor!");
-        }
+        router.push("/pages/painelcontrole");
     };
 
     return (
@@ -96,7 +60,7 @@ export default function LoginView() {
                     </div>
 
                     <ButtonLogin
-                        name={loading ? "Verificando..." : "Entrar"}
+                        name="Entrar"
                         classCadastrar="btn-login"
                         onClick={handleLogin}
                     />

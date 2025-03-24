@@ -9,7 +9,7 @@ import "./styles.css";
 
 const menuItems = [
     { name: "Início", icon: <FiHome />, path: "/pages/painelcontrole" },
-    { name: "Usuários", icon: <FiUsers />, path: "/pages/listusuarios" },
+    { name: "Usuários", icon: <FiUsers />, path: "/pages/usuariocadastrado" },
     { name: "Produtos", icon: <FiBox />, path: "#" },
     { name: "Relatórios", icon: <FiBarChart />, path: "#" },
     { name: "Configurações", icon: <FiSettings />, path: "/pages/configuracao" }
