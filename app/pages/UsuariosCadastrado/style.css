@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2vw;
+
+  width: 100%;
+  padding: 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  width: 350px;
+  padding: 4px 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.search-box input {
+  width: 90%;
+  padding: 5px;
+
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+.filter-select {
+  width: 250px;
+  padding: 8px;
+
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.filter-button {
+  background: #17a2b8;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  width: 100%;
+  padding: 20px;
+
+  font-size: 16px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-y: none;
+  padding: 10px 20px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 4vw;
+
+    width: 100%;
+  }
+
+  .filter-section {
+    justify-content: center;
+    flex-direction: column;
+    gap: 3vw;
+
+    width: 100%;
+    padding: 2vw;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    width: 100%;
+    padding: 4px 8px;
+  }
+
+  .search-box input {
+    width: 90%;
+    padding: 5px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .search-filter {
+ 
+
+    gap: 2vw;
+    width: 100%;
+  }
+
+  .filter-select {
+    width: 80%;
+  }
+
+  .filter-button {
+    width: 20%;
+    height: 100%;
+    font-size: 3vw;
+  }
+
+  .pagination-container {
+    padding: 2vw;
+    font-size: 14px;
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-y: auto;
+    padding: 2vw 4vw;
+  }
+}

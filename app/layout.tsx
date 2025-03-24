@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import UsuariosCadastrados from "./pages/UsuariosCadastrado";
+// import Home from "./pages/Home";
+// import { LoginView } from "./pages/Login"
+// import { PainelControle } from "./pages/PainelControle"
+// import { CadastroView } from "./pages/Cadastro"
+// import { Sidebar } from "./components/Menu"
+// 
 
 const inter = Inter({
   variable: "--font-primary",
@@ -19,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={`${inter.variable} container`}>
         {children}
       </body>

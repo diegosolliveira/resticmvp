@@ -1,0 +1,28 @@
+.input-modal {
+  display: flex;
+  align-items: Start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+  font-weight: bolder;
+
+}
+
+.input-modal input {
+  width: 100%;
+  padding: 8px;
+
+  font-size: 16px;
+
+  background-color: #f4f4f4;
+  outline: none;
+  border: none;
+  border-color: var(--primary-blue-10);
+  border-radius: 4px;
+}
+
+.input-modal input:focus {
+  border: 2px solid var(--primary-blue-10);
+}
