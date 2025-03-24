@@ -7,7 +7,7 @@ interface buttonCadastr {
     children?: ReactNode;
 }
 
-export function CardTitle( {name, children}:buttonCadastr) {
+export default function CardTitle( {name, children}:buttonCadastr) {
 
     return (
         <div className="container-card">

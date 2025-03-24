@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.input-password span {
+.input-password label {
     color: var(--tertiary-gray-3);
     margin-bottom: 8px;
 }
@@ -29,7 +29,7 @@
     align-items: center;
 }
 
-.input-checkbox span {
+.input-checkbox label {
     color: var(--tertiary-gray-1);
     margin-bottom: 0px;
     font-weight: 500;
@@ -43,7 +43,7 @@
     cursor: pointer;
 }
 
-.input-select span {
+.input-select label {
     color: var(--tertiary-gray-3);
     margin-bottom: 8px;
 }

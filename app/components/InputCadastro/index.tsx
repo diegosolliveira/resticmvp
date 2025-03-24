@@ -1,20 +1,21 @@
-import "./styles.css";
+import "./styles.css"
 
 interface InputCadastroProps {
+    label: string;
     name: string;
     type: string;
     classInput: string;
     options?: { value: string; label: string }[];
-    value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
-export function InputCadastro({ name, type, classInput, options = [], value, onChange }: InputCadastroProps) {
+export default function InputCadastro({ label, name, type, classInput, options = [], value, onChange }: InputCadastroProps) {
     return (
         <div className={classInput}>
-            <span>{name}</span>
+            <label htmlFor={name}>{label}</label>
             {type === "select" ? (
-                <select>
+                <select id={name} name={name} value={value} onChange={onChange}>
                     {options.map((option, index) => (
                         <option key={index} value={option.value}>
                             {option.label}
@@ -22,8 +23,10 @@ export function InputCadastro({ name, type, classInput, options = [], value, onC
                     ))}
                 </select>
             ) : (
-                <input type={type} value={value} onChange={onChange} />
+                <input id={name} name={name} type={type} value={value} onChange={onChange} />
             )}
         </div>
     );
 }
+
+

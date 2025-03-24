@@ -1,11 +1,11 @@
-import { CardTitle } from "../../components/CardTitle";
-import { Sidebar } from "../../components/Menu"
-import { StaticCard } from "../../components/StaticCard";
-import { CardUser } from "../../components/CardUser";
+import CardTitle from "../../components/CardTitle";
+import Sidebar from "../../components/Menu"
+import StaticCard from "../../components/StaticCard";
+import CardUser from "../../components/CardUser";
 import { FiUsers, FiShoppingCart, FiDollarSign, FiPackage  } from "react-icons/fi";
 import "./styles.css";
 
-export function PainelControle() {
+export default function PainelControle() {
     return (
         <div className="container-pcontrole">
             <Sidebar></Sidebar>

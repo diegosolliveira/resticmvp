@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ButtonLogin } from "../../components/ButtonLogar";
-import { InputCadastro } from "../../components/InputCadastro";
+import ButtonLogin from "../../components/ButtonLogar";
+import InputCadastro from "../../components/InputCadastro";
 import "./styles.css";
 
-export function LoginView() {
+export default function LoginView() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorEmail, setErrorEmail] = useState("");
@@ -30,7 +30,7 @@ export function LoginView() {
 
     const handleLogin = () => {
         validateForm();
-        console.log("Botão clicado!");{
+        console.log("Botão clicado!"); {
             console.log("Enviando dados...");
         }
     };
@@ -43,11 +43,12 @@ export function LoginView() {
 
             <div className="container-right">
                 <div className="form-container">
-                    <h1>Seu próximo destino começa aqui.</h1>
+                    <h1>Seu próximo destino começa aqui!</h1>
                     <span className="span-description">Preencha seus dados para começar.</span>
 
                     <InputCadastro
-                        name="Email"
+                        label="Email"
+                        name="email"
                         type="email"
                         classInput="input-password"
                         value={email}
@@ -57,7 +58,8 @@ export function LoginView() {
                     {errorEmail && <span className="error">{errorEmail}</span>}
 
                     <InputCadastro
-                        name="Senha"
+                        label="Senha"
+                        name="senha"
                         type="password"
                         classInput="input-password"
                         value={password}
@@ -67,7 +69,7 @@ export function LoginView() {
                     {errorPassword && <span className="error">{errorPassword}</span>}
 
                     <div className="form-container2">
-                        <InputCadastro name="Mantenha-me conectado" type="checkbox" classInput="input-checkbox"></InputCadastro>
+                        <InputCadastro label="Mantenha-me conectado" name="Mantenha-me conectado" type="checkbox" classInput="input-checkbox" value=""></InputCadastro>
                         <a href="">Esqueceu a senha?</a>
                     </div>
 
@@ -78,7 +80,7 @@ export function LoginView() {
                     />
 
                     <span className="link-cadastrar">
-                        Não tem uma conta? <a href="">Cadastre-se</a>
+                        Não tem uma conta? <a href="/pages/cadastro">Cadastre-se</a>
                     </span>
                 </div>
             </div>

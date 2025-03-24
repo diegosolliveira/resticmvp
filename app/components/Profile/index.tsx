@@ -1,4 +1,4 @@
-import { ButtonLogin } from "../ButtonLogar"
+import ButtonLogin from "../ButtonLogar"
 import "./styles.css"
 
 interface dadosProfile {
@@ -7,7 +7,7 @@ interface dadosProfile {
     cpf: string;
 }
 
-export function Profile( {name, email, cpf}: dadosProfile) {
+export default function Profile( {name, email, cpf}: dadosProfile) {
     return (
         <div className="container-profile">
             <div className="profile-title">

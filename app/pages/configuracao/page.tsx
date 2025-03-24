@@ -1,9 +1,9 @@
-import { CardTitle } from "../../components/CardTitle";
-import { Profile } from "../../components/Profile"
-import { Sidebar } from "../../components/Menu"
+import CardTitle from "../../components/CardTitle";
+import Profile from "../../components/Profile"
+import Sidebar from "../../components/Menu"
 import "./styles.css";
 
-export function Configuracao() {
+export default function Configuracao() {
     return (
         <div className="container-pcontrole">
             <Sidebar></Sidebar>

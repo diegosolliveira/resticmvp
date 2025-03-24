@@ -8,7 +8,7 @@ interface buttonCadastr {
     onClick?: () => void;
 }
 
-export function ButtonLogin({ name, classCadastrar, children, onClick }: buttonCadastr) {
+export default function ButtonLogin({ name, classCadastrar, children, onClick }: buttonCadastr) {
 
     return (
         <div>

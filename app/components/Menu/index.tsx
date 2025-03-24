@@ -1,5 +1,5 @@
 import { FiLogOut, FiHome, FiUsers, FiBox, FiBarChart, FiSettings } from "react-icons/fi";
-import { ButtonLogin } from "../../components/ButtonLogar";
+import ButtonLogin from "../../components/ButtonLogar";
 import "./styles.css"
 
 const menuItems = [
@@ -11,7 +11,7 @@ const menuItems = [
 ];
 
 
-export function Sidebar() {
+export default function Sidebar() {
     return (
         <aside className="container-sidebar">
             <nav className="nav-sidebar">

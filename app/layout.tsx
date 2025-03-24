@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { LoginView } from "./pages/Login"
-import { PainelControle } from "./pages/PainelControle"
-import { Configuracao } from "./pages/Configuracao"
-import { CadastroView } from "./pages/Cadastro"
-import { Sidebar } from "./components/Menu"
+import LoginView from "./pages/login/page"
+import PainelControle from "./pages/painelcontrole/page"
+import Configuracao from "./pages/configuracao/page"
+import CadastroView from "./pages/cadastro/page"
+import Sidebar from "./components/Menu"
 import "./globals.css";
 
 const inter = Inter({
@@ -26,11 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} container`}>
-        {/* <Configuracao></Configuracao> */}
-        {/* <PainelControle></PainelControle> */}
-        {/* <Sidebar></Sidebar> */}
-        {/* <CadastroView></CadastroView> */}
-        <LoginView></LoginView>
         {children}
       </body>
     </html>
