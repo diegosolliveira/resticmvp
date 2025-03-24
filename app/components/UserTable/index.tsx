@@ -13,6 +13,10 @@ export default function UserTable({ users, onDelete }: UserTableProps) {
 
   return (
     <>
+      {/* Modal */}
+      {selectedUser && (
+        <UserModal user={selectedUser} onClose={() => setSelectedUser(null)} />
+      )}
       <table className="user-table">
         <thead>
           <tr>
@@ -40,10 +44,16 @@ export default function UserTable({ users, onDelete }: UserTableProps) {
                   </span>
                 </td>
                 <td className="line-button">
-                  <button className="delete-button" onClick={() => onDelete(user.id)}>
+                  <button
+                    className="delete-button"
+                    onClick={() => onDelete(user.id)}
+                  >
                     <i className="bi bi-trash3"></i>
                   </button>
-                  <button className="edit-button" onClick={() => setSelectedUser(user)}>
+                  <button
+                    className="edit-button"
+                    onClick={() => setSelectedUser(user)}
+                  >
                     <i className="bi bi-pencil"></i>
                   </button>
                 </td>
@@ -58,9 +68,6 @@ export default function UserTable({ users, onDelete }: UserTableProps) {
           )}
         </tbody>
       </table>
-
-      {/* Modal */}
-      {selectedUser && <UserModal user={selectedUser} onClose={() => setSelectedUser(null)} />}
     </>
   );
 }

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
-import Home from "./pages/Home";
-
+import UsuariosCadastrados from "./pages/UsuariosCadastrado";
+// import Home from "./pages/Home";
 // import { LoginView } from "./pages/Login"
 // import { PainelControle } from "./pages/PainelControle"
 // import { CadastroView } from "./pages/Cadastro"
 // import { Sidebar } from "./components/Menu"
-// import UsuariosCadastrados from "./pages/UsuariosCadastrado";
+// 
 
 const inter = Inter({
   variable: "--font-primary",
