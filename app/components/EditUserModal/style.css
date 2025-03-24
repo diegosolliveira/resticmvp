@@ -13,11 +13,18 @@
   left: 0;
 }
 
+.modal-title {
+  color: var(--tertiary-gray-1);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
 .modal-content {
   display: flex;
   align-items: start;
   justify-content: center;
   flex-direction: column;
+  z-index: 1;
 
   gap: 20px;
 

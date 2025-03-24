@@ -1,14 +1,6 @@
 {
   "usuarios": [
     {
-      "id": "123457UC",
-      "nome": "Maria",
-      "sobrenome": "Oliveira",
-      "email": "maria@gmail.com",
-      "cpf": "777.777.777-77",
-      "tipo": "Cliente"
-    },
-    {
       "id": "123460UC",
       "nome": "Pedro",
       "sobrenome": "Souza",

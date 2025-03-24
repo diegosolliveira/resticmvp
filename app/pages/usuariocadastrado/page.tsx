@@ -16,7 +16,7 @@ export default function UsuariosCadastrados() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/usuarios")
+      .get("http://localhost:3003/usuarios")
       .then((response) => {
         setUsers(response.data);
       })
@@ -27,7 +27,7 @@ export default function UsuariosCadastrados() {
 
   const handleDelete = (id: string) => {
     axios
-      .delete(`http://localhost:5000/usuarios/${id}`)
+      .delete(`http://localhost:3003/usuarios/${id}`)
       .then(() => {
         setUsers(users.filter((user) => user.id !== id));
       })
@@ -57,7 +57,7 @@ export default function UsuariosCadastrados() {
 
       <Sidebar></Sidebar>
 
-      <div className="container-dashboard">
+      <div className="container-dashboard-puser">
 
         <CardTitle name="Usuários Cadastrados"></CardTitle>
         

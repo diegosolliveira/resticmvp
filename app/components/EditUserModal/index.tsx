@@ -33,10 +33,10 @@ export default function UserModal({ user, onClose }: UserModalProps) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Editar Usuário</h2>
-        <p>
+        <h2 className="modal-title">Editar Usuário</h2>
+        {/* <p>
           <strong>ID:</strong> {user.id}
-        </p>
+        </p> */}
 
         <div className="box-input-modal">
           <InputModal

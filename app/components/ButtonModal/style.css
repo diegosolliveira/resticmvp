@@ -3,14 +3,18 @@
   padding: 8px;
 
   font-size: 16px;
-  color: red;
-
+  border: solid 1px var(--error-1);
+  color: var(--error-1);
   background: none;
-  border: 1px solid red;
   border-radius: 8px;
 
   outline: none;
   cursor: pointer;
+}
+
+.close-button:hover {
+  color: white;
+  background: var(--error-1);
 }
 
 .save-button {
@@ -27,4 +31,8 @@
   border: none;
 
   cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: var(--secondary-blue-4);
 }
