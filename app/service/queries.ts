@@ -16,9 +16,28 @@ export const GET_USER_LIST = gql`
 
 // Mutação para criar um usuário
 export const CREATE_USER = gql`
-  mutation CreateUser($user: UserInput!) {
-    createUser(user: $user) {
-      message
+  mutation CreateUser(
+    $document: String!,
+    $email: String!,
+    $firstName: String!,
+    $lastName: String!,
+    $role: String!,
+    $password: String!
+  ) {
+    createUser(
+      document: $document,
+      email: $email,
+      firstName: $firstName,
+      lastName: $lastName,
+      role: $role,
+      password: $password
+    ) {
+      id
+      document
+      email
+      firstName
+      lastName
+      role
     }
   }
 `;

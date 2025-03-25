@@ -9,6 +9,14 @@
     background-color: var(--primary-blue-10);
 }
 
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -15px;
+    margin-bottom: -5px;
+    display: flex;
+}
+
 .container-right {
     display: flex;
     justify-content: center;

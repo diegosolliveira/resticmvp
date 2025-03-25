@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, HttpLink, ApolloLink, from } from '@apollo
 import { onError } from '@apollo/client/link/error';
 
 // Obtém a URL do GraphQL
-const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URI || 'https://ce80-45-169-219-116.ngrok-free.app/graphql';
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URI || 'http://localhost:4000/graphql';
 
 console.log('Apollo GraphQL URL:', GRAPHQL_URL);
 

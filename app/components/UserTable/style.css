@@ -19,16 +19,20 @@
 
 .badge {
   padding: 5px 10px;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 12px;
   color: #fff;
 }
 
-.badge.agência {
+.badge.admin {
+  background-color: #08407b;
+}
+
+.badge.agency {
   background: #F06666;
 }
 
-.badge.cliente {
+.badge.client {
   background: #00953B;
 }
 
