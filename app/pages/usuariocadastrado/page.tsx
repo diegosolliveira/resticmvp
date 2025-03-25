@@ -1,66 +1,94 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import "./style.css";
 import Sidebar from "../../components/Menu"
 import CardTitle from "../../components/CardTitle"
-import { Users } from "@/app/models/user";
 import UserTable from "@/app/components/UserTable";
+import { GET_USER_LIST, DELETE_USER } from "@/app/service/queries";
+import { useQuery, useMutation } from "@apollo/client";
+
+type ResponseUser = {
+  users: {
+    document: string,
+    email: string,
+    firstName: string,
+    id: string,
+    lastName: string,
+    role: string
+  }[]
+}
+
+type DeleteUserResponse = {
+  deleteUser: {
+    message: string;
+  }
+}
 
 export default function UsuariosCadastrados() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("Todos");
-  const [sortOrder, setSortOrder] = useState(""); // Adicionamos um estado para ordenação
-  const [users, setUsers] = useState<Users[]>([]);
+  const [sortOrder, setSortOrder] = useState("");
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3003/usuarios")
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar usuários:", error);
-      });
-  }, []);
+  // Query para listar usuários
+  const { data, loading: loadingUsers, refetch } = useQuery<ResponseUser>(GET_USER_LIST);
 
-  const handleDelete = (id: string) => {
-    axios
-      .delete(`http://localhost:3003/usuarios/${id}`)
-      .then(() => {
-        setUsers(users.filter((user) => user.id !== id));
-      })
-      .catch((error) => console.error("Erro ao deletar:", error));
+  // Mutation para deletar usuário
+  const [deleteUser, { loading: loadingDelete }] = useMutation<DeleteUserResponse>(DELETE_USER, {
+    onCompleted: (data) => {
+      if (data.deleteUser.message) {
+        // Atualiza a lista após deletar com sucesso
+        refetch();
+      } else {
+        setDeleteError(data.deleteUser.message || "Erro ao deletar usuário");
+      }
+    },
+    onError: (error) => {
+      console.error("Erro ao deletar usuário:", error);
+      setDeleteError(error.message || "Erro ao deletar usuário");
+    }
+  });
+
+  const handleDelete = async (id: string) => {
+    if (window.confirm("Tem certeza que deseja excluir este usuário?")) {
+      try {
+        setDeleteError(null);
+        await deleteUser({
+          variables: { id }
+        });
+      } catch (error) {
+        console.error("Erro ao executar deleção:", error);
+      }
+    }
   };
 
   // Filtragem e ordenação
-  const filteredUsers = users
+  const filteredUsers = data?.users
     .filter((user) =>
-      `${user.nome} ${user.sobrenome} ${user.email} ${user.tipo}`
+      `${user.firstName} ${user.lastName} ${user.email} ${user.role}`
         .toLowerCase()
         .includes(search.toLowerCase())
     )
     .filter((user) =>
       filter === "Todos" || filter === "A-Z" || filter === "Z-A"
         ? true
-        : user.tipo === filter
+        : user.role === filter
     )
     .sort((a, b) => {
-      if (sortOrder === "A-Z") return a.nome.localeCompare(b.nome);
-      if (sortOrder === "Z-A") return b.nome.localeCompare(a.nome);
+      if (sortOrder === "A-Z") return a.firstName.localeCompare(b.firstName);
+      if (sortOrder === "Z-A") return b.firstName.localeCompare(a.firstName);
       return 0;
     });
 
   return (
     <div className="container-pcontrole">
-
       <Sidebar></Sidebar>
 
       <div className="container-dashboard-puser">
 
         <CardTitle name="Usuários Cadastrados"></CardTitle>
-        
+
         <div className="filter-section">
           <div className="search-box">
             <input
@@ -95,12 +123,26 @@ export default function UsuariosCadastrados() {
           </div>
         </div>
 
+        {deleteError && (
+          <div className="error-message" style={{ color: 'red', margin: '10px 0' }}>
+            {deleteError}
+          </div>
+        )}
+
         <div className="pagination-container">
-          <p>Exibindo {filteredUsers.length} usuários</p>
+          <p>
+            {loadingUsers
+              ? "Carregando usuários..."
+              : `Exibindo ${filteredUsers?.length || 0} usuários`
+            }
+          </p>
         </div>
 
         <div className="table-container">
-          <UserTable users={filteredUsers} onDelete={handleDelete} />
+          <UserTable
+            users={filteredUsers || []}
+            onDelete={loadingDelete ? () => { } : handleDelete}
+          />
         </div>
       </div>
     </div>

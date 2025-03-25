@@ -1,8 +1,8 @@
 export interface Users {
   id: string;
-  nome: string;
-  sobrenome: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  cpf: string;
-  tipo: string;
+  document: string;
+  role: string;
 }

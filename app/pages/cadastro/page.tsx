@@ -1,31 +1,86 @@
-"use client";
+"use client"
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import ButtonLogin from "../../components/ButtonLogar";
 import InputCadastro from "../../components/InputCadastro";
 import "./styles.css";
+import { CREATE_USER } from "@/app/service/queries";
+import { useMutation } from "@apollo/client";
 
 export default function CadastroView() {
+    const router = useRouter();
+
     const [formData, setFormData] = useState({
-        nome: "",
-        sobrenome: "",
-        cpfCnpj: "",
-        tipoConta: "",
+        firstName: "",
+        lastName: "",
+        document: "",
+        role: "",
         email: "",
-        senha: "",
-        confirmarSenha: "",
+        password: "",
     });
+
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+
+        if (name === "confirmPassword") {
+            setConfirmPassword(value);
+        } else if (name === "document") {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: formatDocument(value)
+            }));
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
-    const handleSubmit = () => {
-        console.log("Dados do Formulário:", formData);
+    const formatDocument = (value: string) => {
+        const cleaned = value.replace(/\D/g, "");
+
+        if (cleaned.length <= 11) {
+            return cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        } else if (cleaned.length <= 14) {
+            return cleaned.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+        } else {
+            return cleaned.slice(0, 14).replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+        }
+    };
+
+    const [createUser, { loading }] = useMutation(CREATE_USER);
+
+    const handleSubmit = async () => {
+        if (formData.password !== confirmPassword) {
+            setPasswordError("As senhas não coincidem. Verifique e tente novamente.");
+            return;
+        }
+
+        setPasswordError("");
+
+        try {
+            await createUser({
+                variables: {
+                    document: formData.document,
+                    email: formData.email,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    role: formData.role,
+                    password: formData.password
+                }
+            });
+
+            alert("Cadastro realizado com sucesso!");
+            router.push("/");
+        } catch (err) {
+            console.error("Erro ao cadastrar usuário:", err);
+            alert("Erro ao cadastrar. Tente novamente mais tarde.");
+        }
     };
 
     return (
@@ -40,42 +95,42 @@ export default function CadastroView() {
                     <div className="form-container-cadastro">
                         <InputCadastro
                             label="Nome"
-                            name="nome"
+                            name="firstName"
                             type="text"
                             classInput="input-password"
-                            value={formData.nome}
+                            value={formData.firstName}
                             onChange={handleChange}
                         />
 
                         <InputCadastro
                             label="Sobrenome"
-                            name="sobrenome"
+                            name="lastName"
                             type="text"
                             classInput="input-password"
-                            value={formData.sobrenome}
+                            value={formData.lastName}
                             onChange={handleChange}
                         />
 
                         <InputCadastro
                             label="CPF/CNPJ"
-                            name="cpfCnpj"
+                            name="document"
                             type="text"
                             classInput="input-password"
-                            value={formData.cpfCnpj}
+                            value={formData.document}
                             onChange={handleChange}
                         />
 
                         <InputCadastro
                             label="Tipo de Conta"
-                            name="tipoConta"
+                            name="role"
                             type="select"
                             classInput="input-select"
                             options={[
                                 { value: "", label: "Selecione" },
-                                { value: "agencia", label: "Agência" },
-                                { value: "cliente", label: "Cliente" }
+                                { value: "agency", label: "Agência" },
+                                { value: "client", label: "Cliente" }
                             ]}
-                            value={formData.tipoConta}
+                            value={formData.role}
                             onChange={handleChange}
                         />
                     </div>
@@ -91,29 +146,32 @@ export default function CadastroView() {
 
                     <InputCadastro
                         label="Senha"
-                        name="senha"
+                        name="password"
                         type="password"
                         classInput="input-password"
-                        value={formData.senha}
+                        value={formData.password}
                         onChange={handleChange}
                     />
 
                     <InputCadastro
                         label="Confirmar Senha"
-                        name="confirmarSenha"
+                        name="confirmPassword"
                         type="password"
                         classInput="input-password"
-                        value={formData.confirmarSenha}
+                        value={confirmPassword}
                         onChange={handleChange}
                     />
+
+                    {passwordError && <span className="error-message">{passwordError}</span>}
 
                     <div className="form-btn">
                         <a href="/" className="btn-cancelar">Cancelar</a>
 
                         <ButtonLogin
-                            name="Cadastrar"
+                            name={loading ? "Cadastrando..." : "Cadastrar"}
                             classCadastrar="btn-login"
                             onClick={handleSubmit}
+                            disabled={loading}
                         />
                     </div>
                 </div>
@@ -121,4 +179,3 @@ export default function CadastroView() {
         </div>
     );
 }
-

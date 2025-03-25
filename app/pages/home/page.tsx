@@ -1,10 +1,26 @@
+"use client"
+
 import ButtonHome from "../../components/ButtonHome";
 import DestinationCard from "../../components/Cards/DestinationCard";
 import InformationCard from "../../components/Cards/InformationCard";
 import PromotionCard from "../../components/Cards/PromotionCard";
 import FooterHome from "../../components/Footer";
-import HeaderHome from "../../components/HeaderHome/index";
+import HeaderHome from "../../components/HeaderHome";
 import "./style.css";
+import { useQuery, gql } from "@apollo/client";
+
+const GET_CURRENT_USER = gql`
+  query GetCurrentUser {
+    me {
+      id
+      firstName
+      lastName
+      email
+      document
+      role
+    }
+  }
+`;
 
 const informationCards = [
   {
@@ -116,14 +132,40 @@ const destinations = [
 ];
 
 export default function Home() {
-  const nameUser = "João";
+  const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+
+  if (!token) {
+    window.location.href = "/";
+    return null;
+  }
+
+  const { data, loading, error } = useQuery(GET_CURRENT_USER, {
+    context: {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      }
+    }
+  });
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) {
+    console.error("Erro ao carregar usuário:", error);
+    return <p>Erro ao carregar os dados</p>;
+  }
+
+  if (!data?.me) {
+    return <p>Usuário não encontrado</p>;
+  }
+
+  const loggedUser = data.me;
+
   return (
     <div className="home-container">
-      <HeaderHome/>
+      <HeaderHome />
       <main className="home">
         <section className="section-card">
           <h2 className="card-section-title">
-            Olá, {nameUser}! Continue explorando
+            Olá, {loggedUser.firstName}! Continue explorando
           </h2>
           <section className="card-box">
             {informationCards.map((card, index) => (

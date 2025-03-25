@@ -1,4 +1,8 @@
+"use client"
+
 import { useState, useEffect } from "react";
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER } from "@/app/service/queries";
 import { Users } from "@/app/models/user";
 import InputModal from "../InputModal";
 import SelectModal from "../SelectModal";
@@ -11,22 +15,43 @@ interface UserModalProps {
 }
 
 export default function UserModal({ user, onClose }: UserModalProps) {
-  const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
+  const [firstName, setNome] = useState("");
+  const [lastName, setSobrenome] = useState("");
   const [email, setEmail] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [tipo, setTipo] = useState("");
+  const [document, setCpf] = useState("");
+  const [role, setTipo] = useState("");
 
-  // Atualiza os valores sempre que o usuário muda
+  // Mutação para atualizar o usuário
+  const [updateUser, { loading, error }] = useMutation(UPDATE_USER);
+
   useEffect(() => {
     if (user) {
-      setNome(user.nome);
-      setSobrenome(user.sobrenome);
+      setNome(user.firstName);
+      setSobrenome(user.lastName);
       setEmail(user.email);
-      setCpf(user.cpf);
-      setTipo(user.tipo);
+      setCpf(user.document);
+      setTipo(user.role);
     }
   }, [user]);
+
+  const handleSave = async () => {
+    try {
+      await updateUser({
+        variables: {
+          id: user?.id,
+          document,
+          email,
+          firstName,
+          lastName,
+          role,
+        },
+      });
+      
+      onClose();
+    } catch (err) {
+      console.error("Erro ao salvar usuário:", err);
+    }
+  };
 
   if (!user) return null;
 
@@ -34,20 +59,16 @@ export default function UserModal({ user, onClose }: UserModalProps) {
     <div className="modal-overlay">
       <div className="modal-content">
         <h2 className="modal-title">Editar Usuário</h2>
-        {/* <p>
-          <strong>ID:</strong> {user.id}
-        </p> */}
 
         <div className="box-input-modal">
           <InputModal
             label="Nome"
-            value={nome}
+            value={firstName}
             onChange={(e) => setNome(e.target.value)}
           />
-
           <InputModal
             label="Sobrenome"
-            value={sobrenome}
+            value={lastName}
             onChange={(e) => setSobrenome(e.target.value)}
           />
         </div>
@@ -61,26 +82,29 @@ export default function UserModal({ user, onClose }: UserModalProps) {
         <div className="box-input-modal">
           <InputModal
             label="CPF/CNPJ"
-            value={cpf}
+            value={document}
             onChange={(e) => setCpf(e.target.value)}
           />
 
           <SelectModal
             label="Tipo de conta"
-            value={tipo}
+            value={role}
             onChange={(e) => setTipo(e.target.value)}
             options={[
-              { value: "", label: "Selecione" },
-              { value: "agencia", label: "Agência" },
-              { value: "cliente", label: "Cliente" },
+              { value: "agency", label: "Agência" },
+              { value: "client", label: "Cliente" },
+              { value: "admin", label: "Administrador" },
             ]}
           />
         </div>
 
         <div className="box-button-modal">
-          <ButtonModal label="Fechar" className="close-button"  onClick={onClose}/>
-
-          <ButtonModal label="Salvar" className="save-button"  onClick={onClose}/>
+          <ButtonModal label="Fechar" className="close-button" onClick={onClose} />
+          <ButtonModal
+            label={loading ? "Salvando..." : "Salvar"}
+            className="save-button"
+            onClick={handleSave}
+          />
         </div>
       </div>
     </div>

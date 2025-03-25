@@ -1,11 +1,54 @@
+"use client"
+
 import CardTitle from "../../components/CardTitle";
 import Sidebar from "../../components/Menu"
 import StaticCard from "../../components/StaticCard";
 import CardUser from "../../components/CardUser";
 import { FiUsers, FiShoppingCart, FiDollarSign, FiPackage  } from "react-icons/fi";
 import "./styles.css";
+import { useQuery, gql } from "@apollo/client";
+
+const GET_CURRENT_USER = gql`
+  query GetCurrentUser {
+    me {
+      id
+      firstName
+      lastName
+      email
+      document
+      role
+    }
+  }
+`;
 
 export default function PainelControle() {
+    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+    
+        if (!token) {
+            window.location.href = "/";
+            return null;
+        }
+    
+        const { data, loading, error } = useQuery(GET_CURRENT_USER, {
+            context: {
+                headers: {
+                    Authorization: token ? `Bearer ${token}` : "",
+                }
+            }
+        });
+    
+        if (loading) return <p>Carregando...</p>;
+        if (error) {
+            console.error("Erro ao carregar usuário:", error);
+            return <p>Erro ao carregar os dados</p>;
+        }
+    
+        if (!data?.me) {
+            return <p>Usuário não encontrado</p>;
+        }
+    
+        const loggedUser = data.me;
+
     return (
         <div className="container-pcontrole">
             <Sidebar></Sidebar>
@@ -17,7 +60,7 @@ export default function PainelControle() {
                 <div className="dashboard">
 
                     <div className="dashboard-card1">
-                        <h1 className="dashboard-title">Bem-vindo, Administrador</h1>
+                        <h1 className="dashboard-title">Bem-vindo, {loggedUser.firstName}</h1>
                         <span className="dashboard-description">Veja abaixo as estatísticas do sistema</span>
                     </div>
 

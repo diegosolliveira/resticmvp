@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import { ApolloProvider } from "./service/ApolloProvider";
 
 const inter = Inter({
   variable: "--font-primary",
@@ -20,10 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" suppressHydrationWarning={true}>
       <body className={`${inter.variable} container`}>
-        {children}
+        <ApolloProvider>
+          {children}
+        </ApolloProvider>
       </body>
-    </html>
+    </html >
   );
 }
