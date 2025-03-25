@@ -30,6 +30,7 @@ export default function LoginView() {
             localStorage.setItem("accessToken", data.login.accessToken);
             localStorage.setItem("refreshToken", data.login.refreshToken);
 
+
             // Redirecionar para o painel de controle
             router.push("/pages/painelcontrole");
         },

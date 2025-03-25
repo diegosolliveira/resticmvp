@@ -44,11 +44,31 @@ export const CREATE_USER = gql`
 
 // Mutação para atualizar um usuário
 export const UPDATE_USER = gql`
-  mutation UpdateUser($id: ID!, $user: UserInput!) {
-    updateUser(id: $id, user: $user) {
-      message
-    }
+ mutation UpdateUser(
+  $id: ID!,
+  $document: String,
+  $email: String,
+  $firstName: String,
+  $lastName: String,
+  $role: String
+) {
+  updateUser(
+    id: $id,
+    document: $document,
+    email: $email,
+    firstName: $firstName,
+    lastName: $lastName,
+    role: $role
+  ) {
+    id
+    document
+    email
+    firstName
+    lastName
+    role
   }
+}
+
 `;
 // Mutação para deletar um usuário
 export const DELETE_USER = gql`
@@ -67,4 +87,16 @@ export const LOGIN = gql`
       refreshToken
     }
   }
-`; 
+`;
+
+export const GET_CURRENT_USER = gql`
+  query GetCurrentUser {
+    me {
+      id
+      firstName
+      lastName
+      email
+      document
+      role
+    }
+}`;

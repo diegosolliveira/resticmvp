@@ -4,8 +4,6 @@ import { onError } from '@apollo/client/link/error';
 // Obtém a URL do GraphQL
 const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URI || 'http://localhost:4000/graphql';
 
-console.log('Apollo GraphQL URL:', GRAPHQL_URL);
-
 // Link de log para depuração
 const logLink = new ApolloLink((operation, forward) => {
   console.log(`[GraphQL Operação]: ${operation.operationName}`);
@@ -31,6 +29,17 @@ const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
   }
 });
 
+// Adicionar o link de autenticação (token JWT)
+const authLink = new ApolloLink((operation, forward) => {
+  const token = localStorage.getItem("accessToken"); // Ou de onde você estiver armazenando o token JWT
+  operation.setContext({
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  });
+  return forward(operation);
+});
+
 // Configuração do HTTP Link para API real
 const httpLink = new HttpLink({
   uri: GRAPHQL_URL,
@@ -45,7 +54,8 @@ export const client = new ApolloClient({
   link: from([
     logLink,   // Primeiro registra a operação
     errorLink, // Depois captura erros
-    httpLink   // Conecta à API real
+    authLink,  // Link de autenticação que adiciona o token
+    httpLink,  // Conecta à API real
   ]),
   cache: new InMemoryCache(),
   connectToDevTools: true,
@@ -62,4 +72,4 @@ export const client = new ApolloClient({
       errorPolicy: 'all',
     },
   },
-}); 
+});
