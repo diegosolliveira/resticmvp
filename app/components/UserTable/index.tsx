@@ -34,13 +34,13 @@ export default function UserTable({ users, onDelete }: UserTableProps) {
             users.map((user) => (
               <tr key={user.id}>
                 <td>{user.id}</td>
-                <td>{user.nome}</td>
-                <td>{user.sobrenome}</td>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
                 <td>{user.email}</td>
-                <td>{user.cpf}</td>
+                <td>{user.document}</td>
                 <td>
-                  <span className={`badge ${user.tipo.toLowerCase()}`}>
-                    {user.tipo}
+                  <span className={`badge ${user.role.toLowerCase()}`}>
+                    {user.role}
                   </span>
                 </td>
                 <td className="line-button">

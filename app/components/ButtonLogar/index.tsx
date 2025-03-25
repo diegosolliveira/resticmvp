@@ -6,13 +6,15 @@ interface buttonCadastr {
     classCadastrar: string;
     children?: ReactNode;
     onClick?: () => void;
+    disabled?: boolean;
 }
 
-export default function ButtonLogin({ name, classCadastrar, children, onClick }: buttonCadastr) {
-
+export default function ButtonLogin({ name, classCadastrar, children, onClick, disabled }: buttonCadastr) {
     return (
         <div>
-            <button className={classCadastrar} onClick={onClick}>{children}{name}</button>
+            <button className={classCadastrar} onClick={onClick} disabled={disabled}>
+                {children}{name}
+            </button>
         </div>
     );
 }
