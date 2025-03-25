@@ -11,7 +11,10 @@ import { useMutation } from "@apollo/client";
 type ResponseLogin = {
     login: {
         accessToken: string,
-        refreshToken: string
+        refreshToken: string,
+        user: {
+            role: string,
+        }
     }
 }
 
@@ -24,15 +27,22 @@ export default function LoginView() {
     // Usando useMutation para o login
     const [loginMutation, { loading }] = useMutation(LOGIN, {
         onCompleted: (data: ResponseLogin) => {
-            console.log("Login bem-sucedido:", data);
-
             // Salvar tokens no localStorage
             localStorage.setItem("accessToken", data.login.accessToken);
             localStorage.setItem("refreshToken", data.login.refreshToken);
 
+            // Verificar a role e redirecionar
+            const role = data.login.user.role;
 
-            // Redirecionar para o painel de controle
-            router.push("/pages/painelcontrole");
+            console.log(role)
+
+            if (role === 'client') {
+                router.push("/pages/home");
+            } else if (role === 'agency' || role === 'admin') {
+                router.push("/pages/painelcontrole");
+            } else {
+                setFormError("Não foi possível identificar o tipo de usuário.");
+            }
         },
         onError: (error) => {
             console.error("Erro no login:", error);

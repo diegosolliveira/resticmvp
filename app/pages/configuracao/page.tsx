@@ -23,7 +23,7 @@ export default function Configuracao() {
     const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
 
     if (!token) {
-        window.location.href = "/login";
+        window.location.href = "/";
         return null;
     }
 

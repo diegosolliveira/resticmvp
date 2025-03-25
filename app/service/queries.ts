@@ -85,6 +85,9 @@ export const LOGIN = gql`
     login(email: $email, password: $password) {
       accessToken
       refreshToken
+      user{
+        role
+      }
     }
   }
 `;

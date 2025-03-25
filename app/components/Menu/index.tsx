@@ -20,9 +20,12 @@ export default function Sidebar() {
     const router = useRouter();
 
     const handleLogout = () => {
-        console.log("fui clicado")
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+      
         router.push("/");
-    };
+      };
+      
 
     return (
         <aside className="container-sidebar">
