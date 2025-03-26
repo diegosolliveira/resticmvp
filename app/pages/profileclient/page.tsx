@@ -3,7 +3,7 @@
 import { useQuery, gql } from "@apollo/client";
 import CardTitle from "../../components/CardTitle";
 import Profile from "../../components/Profile";
-import Sidebar from "../../components/Menu";
+import HeaderHome from "../../components/HeaderHome";
 import "./styles.css";
 
 const GET_CURRENT_USER = gql`
@@ -19,7 +19,7 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-export default function Configuracao() {
+export default function ProfileClient() {
     const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
 
     if (!token) {
@@ -48,23 +48,23 @@ export default function Configuracao() {
     const loggedUser = data.me;
 
     return (
-        <div className="container-pcontrole">
-            <Sidebar />
-
-            <div className="container-dashboard-config">
-                <CardTitle name="Configuração" />
-
-                <div className="dashboard">
-                    <Profile
-                        id={loggedUser.id}
-                        firstName={`${loggedUser.firstName}`}
-                        lastName={`${loggedUser.lastName}`}
-                        role={loggedUser.role}
-                        email={loggedUser.email}
-                        document={loggedUser.document}
-                    />
+        <div className="home-container">
+            <HeaderHome />
+            <div className="container-pcontrole profileclient">
+                <div className="container-dashboard-config">
+                    <div className="dashboard ">
+                        <Profile
+                            id={loggedUser.id}
+                            firstName={`${loggedUser.firstName}`}
+                            lastName={`${loggedUser.lastName}`}
+                            role={loggedUser.role}
+                            email={loggedUser.email}
+                            document={loggedUser.document}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
+
     );
 }
