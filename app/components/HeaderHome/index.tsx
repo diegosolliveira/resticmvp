@@ -57,7 +57,7 @@ export default function HeaderHome() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
   };
-  
+
   const loggedUser = data.me;
 
   return (
@@ -86,6 +86,11 @@ export default function HeaderHome() {
           <nav className="header-nav-menu">
             <ul className="nav-list">
               <li className="nav-item">
+                <a href="/pages/home" className="nav-link">
+                  Início
+                </a>
+              </li>
+              <li className="nav-item">
                 <a href="#" className="nav-link">
                   Hospedagem
                 </a>
@@ -106,7 +111,7 @@ export default function HeaderHome() {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="/pages/profile" className="nav-link">
+                <a href="/pages/profileclient" className="nav-link">
                   Minha Conta
                 </a>
               </li>
