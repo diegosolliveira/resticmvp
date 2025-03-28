@@ -78,9 +78,9 @@ export default function LoginView() {
             <div className="container-left"></div>
 
             <div className="container-right">
-                <div className="form-container">
+                <div className="form-container login">
                     <h1>Seu próximo destino começa aqui!</h1>
-                    <span className="span-description">Preencha seus dados para começar.</span>
+                    <span className="span-description">Faça login para continuar.</span>
 
                     <InputCadastro
                         label="Email"

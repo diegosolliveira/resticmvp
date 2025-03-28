@@ -8,9 +8,10 @@ interface InputCadastroProps {
     options?: { value: string; label: string }[];
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    error?: string
 }
 
-export default function InputCadastro({ label, name, type, classInput, options = [], value, onChange }: InputCadastroProps) {
+export default function InputCadastro({ label, name, type, classInput, options = [], value, onChange, error }: InputCadastroProps) {
     return (
         <div className={classInput}>
             <label htmlFor={name}>{label}</label>
@@ -25,6 +26,7 @@ export default function InputCadastro({ label, name, type, classInput, options =
             ) : (
                 <input id={name} name={name} type={type} value={value} onChange={onChange} />
             )}
+            {error && <span className="error-message-cadastro">{error}</span>}
         </div>
     );
 }

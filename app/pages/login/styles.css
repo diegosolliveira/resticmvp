@@ -22,7 +22,7 @@
     padding: 0 180px;
 }
 
-.form-container {
+.form-container.login {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -79,4 +79,8 @@
     margin-top: -15px;
     margin-bottom: -5px;
     display: flex;
+}
+
+@media (max-width: 800px) {
+
 }
