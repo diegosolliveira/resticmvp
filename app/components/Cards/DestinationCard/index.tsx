@@ -32,6 +32,9 @@ export default function DestinationCard({
         <p className="card-destination-text">{text}</p>
         <p className="card-destination-price">{price}</p>
       </div>
+      <div className="card-destination-button">
+        <button className="button-destination">VER DETALHES</button>
+      </div>
     </div>
   );
 }

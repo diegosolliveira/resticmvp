@@ -2,7 +2,7 @@ button {
   outline: none;
   cursor: pointer;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
 
   font-weight: bolder;
 
@@ -16,6 +16,11 @@ button {
 }
 
 .btn-primary {
+  width: 100%;
+  padding: 12px;
+}
+
+.button-card-promo{
   width: 100%;
   padding: 12px;
 }

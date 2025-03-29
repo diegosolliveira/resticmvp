@@ -2,6 +2,7 @@
 .home-container {
   display: flex;
   align-items: center;
+  justify-content: start;
   flex-direction: column;
   width: 100%;
   height: auto;
@@ -22,6 +23,8 @@
 
 .section-card {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 16px;
 
@@ -29,13 +32,30 @@
 }
 
 .card-section-title {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+  
   color: var(--tertiary-gray-1);
 }
 
+.card-section-title-hr {
+ width: 10%;
+
+ border-color: var( --primary-blue-10);
+}
+
+
 .card-box {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
 
   padding: 12px 0;
 
@@ -43,10 +63,3 @@
   height: auto;
 }
 
-.section-card-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-}

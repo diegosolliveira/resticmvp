@@ -2,20 +2,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   position: relative;
-  width: 280px;
-  height: 180px;
-  color: white;
 
-  border-radius: 12px;
+  gap: 8px;
+
+  width: 350px;
+  height: auto;
+
+  border-radius: 8px;
+  border: 2px solid var(--tertiary-gray-1);
+
+  color: white;
+  background-color: white;
 }
 
 .card-promo-img {
   width: 100%;
-  height: 100%;
+  height: 180px;
   background: black;
 
-  border-radius: 12px;
+  border-radius: 8px 8px 0 0;
 }
 
 .img-promo {
@@ -23,7 +30,7 @@
   height: 100%;
   object-fit: cover;
   opacity: 0.5;
-  border-radius: 12px;
+  border-radius: 8px 8px 0 0;
   transition: all ease-in 0.5s;
 }
 
@@ -35,7 +42,7 @@
   gap: 4px;
 
   width: 100%;
-  bottom: 0;
+  top: 40%;
   padding: 12px;
 }
 
@@ -51,4 +58,16 @@
 
 .img-promo:hover {
   opacity: 1;
+}
+
+.card-promo-desc {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+  padding: 8px;
+  color: var(--tertiary-gray-1);
 }

@@ -25,7 +25,7 @@
 
 .search-action {
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   position: absolute;
@@ -38,7 +38,7 @@
 
 .search-text {
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 8px;
@@ -52,6 +52,14 @@
 .search-text h4 {
   font-size: 16px;
   font-weight: normal;
+}
+
+.search-search{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 100%;
 }
 
 @media (max-width: 800px) {

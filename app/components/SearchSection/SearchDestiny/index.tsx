@@ -8,6 +8,9 @@ export default function SearchDestiny() {
         <button className="btn-search-destiny btn-search-active">Hospedagem</button>
         <button className="btn-search-destiny">Voos</button>
         <button className="btn-search-destiny">Pacotes</button>
+        
+        <button className="btn-search-destiny">Experiências</button>
+    
       </div>
 
       <div className="search-destiny-box">

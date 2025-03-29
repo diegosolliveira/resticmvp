@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
+import ExperienceCard from "@/app/components/Cards/ExperienceCard";
 import ButtonHome from "../../components/ButtonHome";
 import DestinationCard from "../../components/Cards/DestinationCard";
-import InformationCard from "../../components/Cards/InformationCard";
 import PromotionCard from "../../components/Cards/PromotionCard";
 import FooterHome from "../../components/Footer";
 import HeaderHome from "../../components/HeaderHome";
@@ -22,53 +22,25 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-const informationCards = [
-  {
-    iconHeader: <i className="bi bi-calendar"></i>,
-    title: "Suas próximas viagens",
-    icon: <i className="bi bi-geo-alt-fill"></i>,
-    mainText: "Rio de Janeiro",
-    subText: "15-20 Maio, 2025",
-    linkText: "Ver todas suas viagens",
-  },
-  {
-    iconHeader: <i className="bi bi-star-fill"></i>,
-    title: "Seus Favoritos",
-    icon: <i className="bi bi-building-fill-check"></i>,
-    mainText: "Hotel Beira Mar",
-    subText: "Fortaleza",
-    linkText: "Ver Favoritos",
-  },
-  {
-    iconHeader: <i className="bi bi-search"></i>,
-    title: "Buscas recentes",
-    icon: <i className="bi bi-search"></i>,
-    mainText: "Gramado",
-    subText: "2 adultos, 3 noites",
-    linkText: "Ver últimas buscas",
-  },
-];
-
 const promotions = [
-  {
-    img: "https://jpimg.com.br/uploads/2024/01/aniversario-de-sao-paulo-10-curiosidades-sobre-a-cidade.jpg",
-    title: "São Paulo",
-    text: "Até 25% OFF em hospedagens",
-  },
+
   {
     img: "https://blog.uber-cdn.com/cdn-cgi/image/width=2160,quality=80,onerror=redirect,format=auto/wp-content/uploads/2019/06/o-que-fazer-no-rj.jpg",
     title: "Rio de Janeiro",
     text: "Até 30% OFF em hospedagens",
+    desc: "Válido para viagens até 30/04/2025",
   },
   {
     img: "https://f1ciaimobiliaria.com.br/wp-content/uploads/2023/10/qual-melhor-lugar-para-morar-em-florianopolis.jpg",
     title: "Florianópolis",
     text: "Até 35% OFF em hospedagens",
+    desc: "Reservas antecipadas com descontos",
   },
   {
     img: "https://www.maladeaventuras.com/wp-content/uploads/2020/05/vista-aerea-salvador-2.jpg",
     title: "Salvador",
     text: "Até 40% OFF em hospedagens",
+    desc: "Incluir hospedagem e passeios",
   },
 ];
 
@@ -131,8 +103,36 @@ const destinations = [
   },
 ];
 
+const experiences = [
+  {
+    imageUrl: "https://viajarcomcriancas.com.br/wp-content/uploads/2024/11/shutterstock_1804389379-scaled.webp",
+    title: "Safari África",
+    description: "Uma aventura inesquecível pelos parques nacionais da Tanzânia e Quênia.",
+    price: "12.999",
+    rating: 4.9,
+    reviews: 128,
+  },
+  {
+    imageUrl: "https://www.abraceomundo.com/wp-content/uploads/2019/02/hoteis-romaticos-em-paris.jpg",
+    title: "Paris Romântica",
+    description: "Descubra o charme da cidade luz com pacotes especiais para casais.",
+    price: "8.499",
+    rating: 4.8,
+    reviews: 256,
+  },
+  {
+    imageUrl: "https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-maldivas-capa2019-03.jpg",
+    title: "Paraíso nas Maldivas",
+    description: "Resorts exclusivos e praias paradisíacas te esperam nas Maldivas!",
+    price: "18.299",
+    rating: 4.9,
+    reviews: 312,
+  },
+];
+
 export default function Home() {
-  const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
 
   if (!token) {
     window.location.href = "/";
@@ -143,8 +143,8 @@ export default function Home() {
     context: {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
-      }
-    }
+      },
+    },
   });
 
   if (loading) return <p>Carregando...</p>;
@@ -157,32 +157,15 @@ export default function Home() {
     return <p>Usuário não encontrado</p>;
   }
 
-  const loggedUser = data.me;
-
   return (
     <div className="home-container">
       <HeaderHome />
       <main className="home">
         <section className="section-card">
-          <h2 className="card-section-title">
-            Olá, {loggedUser.firstName}! Continue explorando
-          </h2>
-          <section className="card-box">
-            {informationCards.map((card, index) => (
-              <InformationCard
-                key={index}
-                iconHeader={card.iconHeader}
-                title={card.title}
-                icon={card.icon}
-                mainText={card.mainText}
-                subText={card.subText}
-                linkText={card.linkText}
-              />
-            ))}
-          </section>
-        </section>
-        <section className="section-card">
-          <h2 className="card-section-title">Ofertas Imperdíveis</h2>
+          <div className="card-section-title">
+            <h2 className="card-section-title-h2">Ofertas Imperdíveis</h2>
+            <hr className="card-section-title-hr" />
+          </div>
           <section className="card-box">
             {promotions.map((promo, index) => (
               <PromotionCard
@@ -190,12 +173,17 @@ export default function Home() {
                 img={promo.img}
                 title={promo.title}
                 text={promo.text}
+                desc={promo.desc}
               />
             ))}
           </section>
         </section>
         <section className="section-card">
-          <h2 className="card-section-title">Destino Populares</h2>
+          <div className="card-section-title">
+            <h2 className="card-section-title-h2">Destino Populares</h2>
+            <hr className="card-section-title-hr" />
+          </div>
+
           <section className="card-box">
             {destinations.map((dest, index) => (
               <DestinationCard
@@ -208,9 +196,30 @@ export default function Home() {
               />
             ))}
           </section>
-          <div className="section-card-button">
-            <ButtonHome title="Ver mais" classBtn="btn-secondary" />
-          </div>
+
+          <section className="section-card">
+            <div className="card-section-title">
+              <h2 className="card-section-title-h2">
+                Experiências Inesquecíveis
+              </h2>
+              <hr className="card-section-title-hr" />
+            </div>
+
+            <section className="card-box">
+
+            {experiences.map((experience, index) => (
+              <ExperienceCard
+                key={index}
+                imageUrl={experience.imageUrl}
+                title={experience.title}
+                description={experience.description}
+                price={experience.price}
+                rating={experience.rating}
+                reviews={experience.reviews}
+              />
+            ))}
+            </section>
+          </section>
         </section>
       </main>
       <FooterHome />
