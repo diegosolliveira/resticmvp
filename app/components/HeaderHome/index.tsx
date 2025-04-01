@@ -65,7 +65,7 @@ export default function HeaderHome() {
       <div className="header">
         <div className="container-header">
           <div className="header-logo">
-            <Image src={Logo} height={32} width={120} alt="logo" />
+            {/* <Image src={Logo} height={32} width={120} alt="logo" /> */}
           </div>
 
           <div className="header-actions">
@@ -76,7 +76,7 @@ export default function HeaderHome() {
 
             <div className="profile" onClick={toggleMenu}>
               <span className="profile-name">{loggedUser.firstName}</span>
-              <div className="profile-avatar">J</div>
+              <div className="profile-avatar">D</div>
             </div>
           </div>
         </div>

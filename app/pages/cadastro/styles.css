@@ -6,7 +6,10 @@
 .container-left {
     width: 50%;
     height: 100%;
-    background-color: var(--primary-blue-10);
+    /* background-color: var(--primary-blue-10); */
+    background-image: url("../../assets/image/image1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .error-message {
@@ -17,21 +20,29 @@
     display: flex;
 }
 
+.error-message-cadastro {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: -10px;
+    display: flex;
+}
+
 .container-right {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
-    padding: 0 180px;
+    /* padding: 0 180px; */
     background-color: white;
 }
 
 .form-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    gap: 20px;
+    width: 80%;
+    gap: 45px;
 }
 
 .container-right h1 {
@@ -40,17 +51,22 @@
     margin-bottom: -17px;
 }
 
+.div-title {
+    display: flex;
+    flex-direction: column;
+}
+
 .span-description {
     color: var(--tertiary-gray-1);
     font-weight: 500;
-    margin-bottom: 25px;
+    margin-top: 15px;
 }
 
 .form-container-cadastro {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px 20px;
-    margin: 10px 0 20px 0;
+    /* margin: 10px 0 20px 0; */
 }
 
 .form-container-cadastro a {
@@ -81,7 +97,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .btn-cancelar {
@@ -89,4 +105,10 @@
     text-decoration: none;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 1360px) {
+    .container-right h1 {
+        font-size: 26px;
+    }
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -21,7 +21,9 @@ export default function CadastroView() {
     });
 
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const [createUser, { loading }] = useMutation(CREATE_USER);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -39,11 +41,12 @@ export default function CadastroView() {
                 [name]: value
             }));
         }
+
+        setErrors(prevErrors => ({ ...prevErrors, [name]: "" }));
     };
 
     const formatDocument = (value: string) => {
         const cleaned = value.replace(/\D/g, "");
-
         if (cleaned.length <= 11) {
             return cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         } else if (cleaned.length <= 14) {
@@ -53,15 +56,43 @@ export default function CadastroView() {
         }
     };
 
-    const [createUser, { loading }] = useMutation(CREATE_USER);
+    const validateEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
 
-    const handleSubmit = async () => {
+    const validateCPF_CNPJ = (document: string) => {
+        const cleaned = document.replace(/\D/g, "");
+        return cleaned.length === 11 || cleaned.length === 14;
+    };
+
+    const validateForm = () => {
+        let newErrors: Record<string, string> = {};
+
+        if (!formData.firstName.trim()) newErrors.firstName = "Nome é obrigatório.";
+        if (!formData.lastName.trim()) newErrors.lastName = "Sobrenome é obrigatório.";
+        if (!formData.document.trim()) {
+            newErrors.document = "CPF/CNPJ é obrigatório.";
+        } else if (!validateCPF_CNPJ(formData.document)) {
+            newErrors.document = "CPF/CNPJ inválido.";
+        }
+        if (!formData.role) newErrors.role = "Selecione um tipo de conta.";
+        if (!formData.email.trim()) {
+            newErrors.email = "E-mail é obrigatório.";
+        } else if (!validateEmail(formData.email)) {
+            newErrors.email = "E-mail inválido.";
+        }
+        if (!formData.password) newErrors.password = "Senha é obrigatória.";
+        if (!confirmPassword) newErrors.confirmPassword = "Confirme sua senha.";
         if (formData.password !== confirmPassword) {
-            setPasswordError("As senhas não coincidem. Verifique e tente novamente.");
-            return;
+            newErrors.confirmPassword = "As senhas não coincidem.";
         }
 
-        setPasswordError("");
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = async () => {
+        if (!validateForm()) return;
 
         try {
             await createUser({
@@ -71,8 +102,8 @@ export default function CadastroView() {
                     firstName: formData.firstName,
                     lastName: formData.lastName,
                     role: formData.role,
-                    password: formData.password
-                }
+                    password: formData.password,
+                },
             });
 
             alert("Cadastro realizado com sucesso!");
@@ -89,8 +120,10 @@ export default function CadastroView() {
 
             <div className="container-right">
                 <div className="form-container">
-                    <h1>Cadastre-se</h1>
-                    <span className="span-description">Preencha seus dados para começar.</span>
+                    <div className="div-title">
+                        <h1>Cadastre-se</h1>
+                        <span className="span-description">Preencha seus dados para começar.</span>
+                    </div>
 
                     <div className="form-container-cadastro">
                         <InputCadastro
@@ -100,6 +133,7 @@ export default function CadastroView() {
                             classInput="input-password"
                             value={formData.firstName}
                             onChange={handleChange}
+                            error={errors.firstName}
                         />
 
                         <InputCadastro
@@ -109,6 +143,7 @@ export default function CadastroView() {
                             classInput="input-password"
                             value={formData.lastName}
                             onChange={handleChange}
+                            error={errors.lastName}
                         />
 
                         <InputCadastro
@@ -118,6 +153,7 @@ export default function CadastroView() {
                             classInput="input-password"
                             value={formData.document}
                             onChange={handleChange}
+                            error={errors.document}
                         />
 
                         <InputCadastro
@@ -132,6 +168,7 @@ export default function CadastroView() {
                             ]}
                             value={formData.role}
                             onChange={handleChange}
+                            error={errors.role}
                         />
                     </div>
 
@@ -142,6 +179,7 @@ export default function CadastroView() {
                         classInput="input-password"
                         value={formData.email}
                         onChange={handleChange}
+                        error={errors.email}
                     />
 
                     <InputCadastro
@@ -151,6 +189,7 @@ export default function CadastroView() {
                         classInput="input-password"
                         value={formData.password}
                         onChange={handleChange}
+                        error={errors.password}
                     />
 
                     <InputCadastro
@@ -160,9 +199,8 @@ export default function CadastroView() {
                         classInput="input-password"
                         value={confirmPassword}
                         onChange={handleChange}
+                        error={errors.confirmPassword}
                     />
-
-                    {passwordError && <span className="error-message">{passwordError}</span>}
 
                     <div className="form-btn">
                         <a href="/" className="btn-cancelar">Cancelar</a>

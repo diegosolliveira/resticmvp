@@ -6,7 +6,10 @@
 .container-left {
     width: 50%;
     height: 100%;
-    background-color: var(--primary-blue-10);
+    /* background-color: var(--primary-blue-10); */
+    background-image: url("../../assets/image/image2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container-right {
@@ -16,13 +19,13 @@
     width: 50%;
     height: 100%;
     background-color: white;
-    padding: 0 180px;
+    /* padding: 0 180px; */
 }
 
-.form-container {
+.form-container.login {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     gap: 20px;
 }
 
@@ -76,4 +79,10 @@
     margin-top: -15px;
     margin-bottom: -5px;
     display: flex;
+}
+
+@media (max-width: 1360px) {
+    .container-right h1 {
+        font-size: 26px;
+    }
 }

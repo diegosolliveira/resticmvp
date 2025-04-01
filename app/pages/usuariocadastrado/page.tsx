@@ -66,7 +66,7 @@ export default function UsuariosCadastrados() {
   // Filtragem e ordenação
   const filteredUsers = data?.users
     .filter((user) =>
-      `${user.firstName} ${user.lastName} ${user.email} ${user.role}`
+      `${user.firstName} ${user.lastName} ${user.email} ${user.role} ${user.document}`
         .toLowerCase()
         .includes(search.toLowerCase())
     )

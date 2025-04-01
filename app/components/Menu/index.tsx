@@ -2,10 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@apollo/client";
 import Link from "next/link";
 import { FiLogOut, FiHome, FiUsers, FiBox, FiBarChart, FiSettings } from "react-icons/fi";
 import ButtonLogin from "../../components/ButtonLogar";
 import "./styles.css";
+import { LOGOUT } from "@/app/service/queries";
 
 const menuItems = [
     { name: "Início", icon: <FiHome />, path: "/pages/painelcontrole" },
@@ -18,14 +20,20 @@ const menuItems = [
 export default function Sidebar() {
     const pathname = usePathname();
     const router = useRouter();
+    const [logout] = useMutation(LOGOUT);
 
-    const handleLogout = () => {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-      
-        router.push("/");
-      };
-      
+    const handleLogout = async () => {
+        try {
+            await logout();
+
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+
+            router.push("/");
+        } catch (error) {
+            console.error("Erro ao fazer logout:", error);
+        }
+    };
 
     return (
         <aside className="container-sidebar">
