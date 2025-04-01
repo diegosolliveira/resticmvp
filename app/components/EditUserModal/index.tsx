@@ -93,7 +93,6 @@ export default function UserModal({ user, onClose }: UserModalProps) {
             options={[
               { value: "agency", label: "Agência" },
               { value: "client", label: "Cliente" },
-              { value: "admin", label: "Administrador" },
             ]}
           />
         </div>

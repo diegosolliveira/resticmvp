@@ -92,6 +92,15 @@ export const LOGIN = gql`
   }
 `;
 
+
+export const LOGOUT = gql`
+  mutation Logout {
+    logout {
+      message
+    }
+  }
+`;
+
 export const GET_CURRENT_USER = gql`
   query GetCurrentUser {
     me {
