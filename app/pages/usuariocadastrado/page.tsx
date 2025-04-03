@@ -115,8 +115,8 @@ export default function UsuariosCadastrados() {
               }}
             >
               <option value="Todos">Todos</option>
-              <option value="Agência">Agência</option>
-              <option value="Cliente">Cliente</option>
+              <option value="agency">Agência</option>
+              <option value="client">Cliente</option>
               <option value="A-Z">Ordenar A-Z</option>
               <option value="Z-A">Ordenar Z-A</option>
             </select>
